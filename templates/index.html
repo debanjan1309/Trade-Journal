@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Trading Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<h1>📊 Trading Dashboard</h1>
+
+<div class="dashboard-grid">
+    <div class="card">Total Trades: <b>{{ total }}</b></div>
+    <div class="card green">Winning Trades: <b>{{ wins }}</b></div>
+    <div class="card red">Losing Trades: <b>{{ losses }}</b></div>
+    <div class="card">Total P/L: <b>₹{{ profit }}</b></div>
+    <div class="card">Win Rate: <b>{{ win_rate }}%</b></div>
+</div>
+
+<h2>🏆 Best Trade</h2>
+{% if best %}
+    <p>{{ best.stock }} | ₹{{ best.result }} on {{ best.date }}</p>
+{% else %}
+    <p>No trades yet</p>
+{% endif %}
+
+<h2>💔 Worst Trade</h2>
+{% if worst %}
+    <p>{{ worst.stock }} | ₹{{ worst.result }} on {{ worst.date }}</p>
+{% else %}
+    <p>No trades yet</p>
+{% endif %}
+
+<h2>📅 Monthly Summary</h2>
+<ul>
+    {% for month, value in monthly %}
+        <li>{{ month }}: ₹{{ value | round(2) }}</li>
+    {% endfor %}
+</ul>
+
+<br>
+<a href="/trades" class="btn">📁 View All Trades</a>
+<a href="/add" class="btn">➕ Add Trade</a>
+
+</body>
+</html>
