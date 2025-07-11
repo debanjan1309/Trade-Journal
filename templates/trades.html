@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>All Trades</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<h1>📁 Trade Log</h1>
+<a href="/" class="btn">← Back to Dashboard</a>
+<hr>
+{% for trade in trades %}
+<div class="post">
+    <h2>{{ trade.stock }} ({{ trade.direction }}) - {{ trade.date }}</h2>
+    <p>Entry: ₹{{ trade.entry }} | Exit: ₹{{ trade.exit }} | Qty: {{ trade.qty }}</p>
+    <p>Result: ₹{{ trade.result }}
+        {% if trade.result > 0 %}<span class="green">Profit</span>
+        {% elif trade.result < 0 %}<span class="red">Loss</span>
+        {% else %}Break-even{% endif %}
+    </p>
+    {% if trade.image %}
+        <img src="{{ url_for('static', filename='uploads/' + trade.image) }}" class="post-img">
+    {% endif %}
+    <hr>
+</div>
+{% endfor %}
+</body>
+</html>
