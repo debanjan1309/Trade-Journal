@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Trade</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<h1>📝 Log New Trade</h1>
+<form method="post" enctype="multipart/form-data">
+    <input type="text" name="stock" placeholder="Stock Name (e.g. TCS)" required><br><br>
+    <select name="direction" required>
+        <option value="">Direction</option>
+        <option value="Buy">Buy</option>
+        <option value="Sell">Sell</option>
+    </select><br><br>
+    <input type="number" name="entry" step="0.01" placeholder="Entry Price" required><br><br>
+    <input type="number" name="exit" step="0.01" placeholder="Exit Price" required><br><br>
+    <input type="number" name="qty" placeholder="Quantity" required><br><br>
+    <input type="date" name="date" required><br><br>
+    <label>Upload Chart (optional):</label><br>
+    <input type="file" name="image" accept="image/*"><br><br>
+    <button type="submit">Submit Trade</button>
+</form>
+<br>
+<a href="/">← Back to Journal</a>
+</body>
+</html>
